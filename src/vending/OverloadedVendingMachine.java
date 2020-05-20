@@ -1,5 +1,7 @@
 package vending;
 
+import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.Test;
 import vending.product.Chocolates;
 import vending.product.Product;
 import vending.product.SaltySnacks;
@@ -10,6 +12,10 @@ public class OverloadedVendingMachine {
     private int chocolatesQty;
     private int saltySnacksQty;
     private int softDrinkQty;
+
+    private Chocolates chocolates;
+    private SaltySnacks saltySnacks;
+    private SoftDrinks softDrinks;
 
     public OverloadedVendingMachine(int chocolatesQty , int saltySnacksQty ,int softDrinkQty) {
         this.chocolatesQty = chocolatesQty;
@@ -51,10 +57,11 @@ public class OverloadedVendingMachine {
 
 
     public void buy(Chocolates chocolates){
+
         if (chocolates != null){
             chocolatesQty--;
-            if (chocolatesQty == 0){
-                return;
+            if (chocolatesQty < 0){
+                chocolatesQty = 0;
             }
         }
     }
@@ -63,7 +70,7 @@ public class OverloadedVendingMachine {
         if (saltySnacks != null){
             saltySnacksQty--;
             if (saltySnacksQty == 0){
-                return;
+                saltySnacksQty = 0;
             }
         }
     }
@@ -72,7 +79,7 @@ public class OverloadedVendingMachine {
         if (softDrinks != null){
             softDrinkQty--;
             if (softDrinkQty == 0){
-                return;
+                softDrinkQty = 0;
             }
         }
     }
@@ -81,21 +88,21 @@ public class OverloadedVendingMachine {
         if (product instanceof Chocolates){
             chocolatesQty--;
             if (chocolatesQty == 0){
-                return;
+                chocolatesQty = 0;
             }
         }
 
         else if (product instanceof SaltySnacks){
             saltySnacksQty--;
             if (saltySnacksQty == 0){
-                return;
+                saltySnacksQty = 0;
             }
         }
 
         else if (product instanceof SoftDrinks){
             softDrinkQty--;
             if (softDrinkQty == 0){
-                return;
+                softDrinkQty = 0;
             }
         }
     }
@@ -135,7 +142,23 @@ public class OverloadedVendingMachine {
     }
 
     public int getStock(){
-      return 0;
+
+        int countStock = 0 ;
+
+        if (chocolates != null){
+            return chocolatesQty += countStock;
+        }
+
+        if (saltySnacks != null){
+            return saltySnacksQty += countStock;
+        }
+
+        if (softDrinks != null){
+            return softDrinkQty += countStock;
+        }
+
+        return countStock;
     }
+
 
 }
