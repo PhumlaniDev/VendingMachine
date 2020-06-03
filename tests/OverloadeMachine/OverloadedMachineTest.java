@@ -1,6 +1,7 @@
-package vending;
+package OverloadeMachine;
 
 import org.junit.jupiter.api.Test;
+import vending.OverloadedVendingMachine;
 import vending.product.Chocolates;
 import vending.product.Product;
 import vending.product.SaltySnacks;
@@ -8,7 +9,7 @@ import vending.product.SoftDrinks;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Main {
+public class OverloadedMachineTest {
 
     @Test
     public void shouldAddStock(){
@@ -126,6 +127,14 @@ public class Main {
         vendingMachine3.buy(softDrinks);
         vendingMachine3.buy(softDrinks);
         assertEquals(5,vendingMachine3.getStock(softDrinks));
+
+
+        OverloadedVendingMachine vendingMachine4 = new OverloadedVendingMachine(0,0,0);
+        Product product = new Product();
+        vendingMachine4.addStock(product);
+        vendingMachine4.buy(chocolates);
+        vendingMachine4.buy(saltySnacks);
+        assertEquals(1,vendingMachine4.getStock());
 
     }
 }

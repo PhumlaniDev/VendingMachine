@@ -42,15 +42,15 @@ public class OverloadedVendingMachine {
     }
 
     public void addStock(Product product){
-        if (product instanceof Chocolates){
+        if (product != null){
             chocolatesQty++;
         }
 
-        if (product instanceof SaltySnacks){
+        if (product != null){
             saltySnacksQty++;
         }
 
-        if (product instanceof SoftDrinks){
+        if (product != null){
             softDrinkQty++;
         }
     }
@@ -141,24 +141,8 @@ public class OverloadedVendingMachine {
         return countStock;
     }
 
-    public int getStock(){
-
-        int countStock = 0 ;
-
-        if (chocolates != null){
-            return chocolatesQty += countStock;
-        }
-
-        if (saltySnacks != null){
-            return saltySnacksQty += countStock;
-        }
-
-        if (softDrinks != null){
-            return softDrinkQty += countStock;
-        }
-
-        return countStock;
+    public int getStock() {
+        return softDrinkQty + saltySnacksQty + chocolatesQty;
     }
-
 
 }
