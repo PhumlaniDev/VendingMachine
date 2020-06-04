@@ -1,5 +1,6 @@
 package vending;
 
+
 import vending.product.*;
 
 public class ExtendableVendingMachine {
@@ -16,30 +17,30 @@ public class ExtendableVendingMachine {
         this.sweetsQty = sweetsQty;
     }
 
-    public void buy(Product product, int amount) {
+    public void buy(Product product, int qty) {
         if (product instanceof Chocolates) {
-            chocolatesQty -= amount;
+            chocolatesQty -= qty;
             if (chocolatesQty <= 0){
                 chocolatesQty = 0;
             }
         }
 
         else if (product instanceof SaltySnacks) {
-            saltySnacksQty -= amount;
+            saltySnacksQty -= qty;
             if (saltySnacksQty <= 0){
                 saltySnacksQty = 0;
             }
         }
 
         else if (product instanceof SoftDrinks) {
-            softDrinkQty -= amount;
+            softDrinkQty -= qty;
             if (softDrinkQty <= 0){
                 softDrinkQty = 0;
             }
         }
 
         else if (product instanceof Sweets) {
-            sweetsQty -= amount;
+            sweetsQty -= qty;
             if (sweetsQty <= 0){
                 sweetsQty = 0;
             }
@@ -106,6 +107,22 @@ public class ExtendableVendingMachine {
     }
 
     public int getStock(Product product) {
+
+        if (product instanceof Chocolates) {
+            return chocolatesQty;
+        }
+
+        if (product instanceof SaltySnacks) {
+            return saltySnacksQty;
+        }
+
+        if (product instanceof SoftDrinks) {
+            return softDrinkQty;
+        }
+
+        if (product instanceof Sweets) {
+            return sweetsQty;
+        }
 
         return chocolatesQty + saltySnacksQty + softDrinkQty + sweetsQty;
     }
